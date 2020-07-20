@@ -1,0 +1,17 @@
+section h2 {
+    margin-bottom: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #3b6978;
+  }
+  section img {
+    width: 60%;
+    max-height: 100px;
+    margin-left: 20%;
+    border-radius: 10px;
+  }
+  
+  section p {
+    vertical-align: bottom;
+    color: #204051;
+  }
