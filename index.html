@@ -12,8 +12,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script id="imageTemplate" type="text/x-mustach-template">
-      <section>
-        <h2>{{name}}</h2>
+      <section data-keyword='{{keyword}}'>
+        <h2>{{title}}</h2>
         <img src="{{image_url}}" alt="{{description}}">
         <p># of horns {{horns}}</p>
       </section>
