@@ -1,5 +1,22 @@
 # lab-02-jquery
+
+
+# Feature #7
+Number and name of feature: Feature 4: Sort the images
+
+Estimate of time needed to complete: 60 min
+
+Start time: 14:30
+
+Finish time: 15:15
+
+Actual time needed to complete: 45 min.
+
+
+
+# Feature #5
 Number and name of feature: Feature 2: Templating
+
 Estimate of time needed to complete: 15 min
 
 Start time: 13:15

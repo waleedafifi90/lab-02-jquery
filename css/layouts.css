@@ -5,7 +5,7 @@ section {
     display: flex;
     flex-flow: column wrap;
     justify-content: space-around;
-    float: left;
+    /* float: left; */
     background-color: #f5f5f5;
     border-radius: 25px;
     margin: 15px;
