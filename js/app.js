@@ -1,6 +1,6 @@
 'use-strict';
 
-const image = [];
+var image = [];
 let keywords = [];
 
 function Image(image_url, title, description, keyword, horns) {
@@ -9,6 +9,7 @@ function Image(image_url, title, description, keyword, horns) {
   this.description = description;
   this.keyword = keyword;
   this.horns = horns;
+  keywords.push(keyword);
 }
 
 function Keyword(name) {
@@ -16,37 +17,15 @@ function Keyword(name) {
   keywords.push(name);
 }
 
-function getData(url) {
-  $.get(url, function (data) {
-    let $data = data;
-    $data.forEach(function (element) {
-      image.push(new Image(element.image_url, element.title, element.description, element.keyword, element.horns));
-      new Keyword(element.keyword);
-    });
-    image.forEach(function (element) {
-      element.renderImage(element.image_url, element.title, element.description, element.horns, element.keyword);
-    });
-    keywords = new Set(keywords);
-    keywords.forEach(function (element) {
-      createList(element);
-    });
-    $('#Filter').change(hideImageElement);
-    $('#photo-template').remove();
-  });
-}
-
 function createList(keyword) {
   let $option = $('<option>').text(keyword).attr('value', keyword);
   $('#Filter').append($option);
 }
 
-Image.prototype.renderImage = function (url, title, description, horns, keyword) {
-  let template = $('#photo-template').clone();
-  template.attr('data-keyword', keyword);
-  template.find('h2').text(title);
-  template.find('img').attr('src', url).attr('alt', description);
-  template.find('p').text(`# of horns: ${horns}`);
-  $('main').append(template);
+Image.prototype.renderImage = function () {
+  let template = $('#imageTemplate').html();
+  let rederedObject = Mustache.render(template,this);
+  $('main').append(rederedObject);
 };
 
 function hideImageElement() {
@@ -61,4 +40,37 @@ function hideImageElement() {
   }
 }
 
-getData('data/page-1.json');
+let numPage = 1;
+numPage = $('button').on('click', function() {
+  numPage = $(this).attr('id'); //to get the id clicked button
+  console.log(numPage);
+  getData(`data/page-${numPage}.json`);
+});
+
+getData(`data/page-1.json`);
+
+function getData(url) {
+  $('main').empty();
+  image = [];
+  $('#Filter').find('option').not(':first').remove();
+  
+  $.get(url, function (data) {
+    let $data = data;
+    let array = [];
+    $data.forEach(function (element) {
+      image.push(new Image(element.image_url, element.title, element.description, element.keyword, element.horns));
+      array.push(element.keyword);
+      // keywords = new Keyword(element.keyword);
+    });
+    image.forEach(function (element) {
+      element.renderImage(element.image_url, element.title, element.description, element.horns, element.keyword);
+    });
+    array = new Set(array);
+
+    array.forEach(function (element) {
+      createList(element);
+    });
+    $('#Filter').change(hideImageElement);
+    $('#photo-template').remove();
+  });
+}
