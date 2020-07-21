@@ -40,13 +40,16 @@ function createList(keyword) {
   $('#Filter').append($option);
 }
 
-Image.prototype.renderImage = function (url, title, description, horns, keyword) {
-  let template = $('#photo-template').clone();
-  template.attr('data-keyword', keyword);
-  template.find('h2').text(title);
-  template.find('img').attr('src', url).attr('alt', description);
-  template.find('p').text(`# of horns: ${horns}`);
-  $('main').append(template);
+Image.prototype.renderImage = function () {
+  let template = $('#imageTemplate').html();
+
+  let rederedObject = Mustache.render(template, this);
+  // let template = $('#photo-template').clone();
+  // template.attr('data-keyword', keyword);
+  // template.find('h2').text(title);
+  // template.find('img').attr('src', url).attr('alt', description);
+  // template.find('p').text(`# of horns: ${horns}`);
+  $('main').append(rederedObject);
 };
 
 function hideImageElement() {
