@@ -1,11 +1,11 @@
 # lab-02-jquery
-Number and name of feature: Feature #2: Filter images
+Number and name of feature: Feature 2: Templating
 
-Estimate of time needed to complete: 20 min
+Estimate of time needed to complete: 15 min
 
-Start time: 14:40
+Start time: 13:15
 
-Finish time: 13:00
+Finish time: 13:23
 
-Actual time needed to complete: 20 min.
+Actual time needed to complete: 8 min.
 
