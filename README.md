@@ -9,6 +9,17 @@ Finish time: 13:23
 Actual time needed to complete: 8 min.
 
 
+# Feature #4
+Number and name of feature: Feature 1: Pagination
+
+Estimate of time needed to complete: 15 min
+
+Start time: 14:20
+
+Finish time: 13:35
+
+Actual time needed to complete: 55 min.
+
 # Feature #3
 Number and name of feature: Feature #3: Style the application
 
